@@ -17,9 +17,9 @@ public class movieServiceImpl implements movieService {
     private RestTemplate rt = new RestTemplate();
 
     @Override
-    public String getPopular() {
-        ResponseEntity<String> entity = rt.getForEntity("https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1&api_key=" + apikey, String.class);
-        String body = entity.getBody();
+    public ApiResponse getPopular() {
+        ResponseEntity<ApiResponse> entity = rt.getForEntity("https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1&api_key=" + apikey, ApiResponse.class);
+        ApiResponse body = entity.getBody();
         return body;
     }
 }
