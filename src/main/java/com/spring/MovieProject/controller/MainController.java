@@ -17,11 +17,14 @@ public class MainController {
     @Autowired
     private movieServiceImpl movieService;
 
+    private String address = "https://image.tmdb.org/t/p/w500";
+
     @GetMapping("/v1/popular")
     public String getPopular(Model model) {
 
         ApiResponse popularMovieList = movieService.getPopular();
         model.addAttribute("popularMovieList", popularMovieList);
+        model.addAttribute("address", address);
         return "index";
     }
 }

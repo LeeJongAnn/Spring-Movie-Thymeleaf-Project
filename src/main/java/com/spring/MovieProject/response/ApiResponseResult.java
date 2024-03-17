@@ -14,7 +14,7 @@ public class ApiResponseResult {
     private String overview;
     private String popularity;
     private String poster_path;
-    private Date release_date;
+    private String release_date;
     private float vote_average;
     private float vote_count;
 
@@ -66,11 +66,11 @@ public class ApiResponseResult {
         this.poster_path = poster_path;
     }
 
-    public Date getRelease_date() {
+    public String getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(Date release_date) {
+    public void setRelease_date(String release_date) {
         this.release_date = release_date;
     }
 
