@@ -15,6 +15,7 @@ public class movieServiceImpl implements movieService {
     @Value("${admin}")
     private String apikey;
     private RestTemplate rt = new RestTemplate();
+
     @Override
     public ApiResponse getPopular() {
         ResponseEntity<ApiResponse> entity = rt.getForEntity("https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&api_key=" + apikey, ApiResponse.class);
