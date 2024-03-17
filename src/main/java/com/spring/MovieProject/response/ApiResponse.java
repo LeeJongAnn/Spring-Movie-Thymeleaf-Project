@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@ToString
 @Getter
 public class ApiResponse {
 
@@ -16,4 +15,14 @@ public class ApiResponse {
     private List<ApiResponseResult> results = new ArrayList<>();
     private int totalPages;
     private int totalResults;
+
+    @Override
+    public String toString() {
+        return "ApiResponse{" +
+                "page=" + page +
+                ", results=" + results +
+                ", totalPages=" + totalPages +
+                ", totalResults=" + totalResults +
+                '}';
+    }
 }
