@@ -20,9 +20,8 @@ public class MainController {
     @GetMapping("/v1/popular")
     public String getPopular(Model model) {
 
-        ApiResponse popularMovieList = movieService.getPopular();
-        List<ApiResponseResult> results = popularMovieList.getListApiResponseResults();
-        model.addAttribute("results", results);
+        String popularMovieList = movieService.getPopular();
+        model.addAttribute("popularMovieList", popularMovieList);
         return "index";
     }
 }
