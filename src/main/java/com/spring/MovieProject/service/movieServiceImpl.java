@@ -18,7 +18,7 @@ public class movieServiceImpl implements movieService {
 
     @Override
     public String getPopular() {
-        ResponseEntity<String> entity = rt.getForEntity("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=" + apikey, String.class);
+        ResponseEntity<String> entity = rt.getForEntity("https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1&api_key=" + apikey, String.class);
         String body = entity.getBody();
         return body;
     }
