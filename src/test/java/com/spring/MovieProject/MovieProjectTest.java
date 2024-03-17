@@ -23,7 +23,7 @@ public class MovieProjectTest {
         RestTemplate rt = new RestTemplate();
         ResponseEntity<ApiResponse> entity = rt.getForEntity("https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1&api_key=" + apikey, ApiResponse.class);
         ApiResponse body = entity.getBody();
-        List<ApiResponseResult> listApiResponseResults = body.getListApiResponseResults();
+        List<ApiResponseResult> listApiResponseResults = body.getMovieList();
         System.out.println(listApiResponseResults);
     }
 }
