@@ -23,7 +23,7 @@ public class ApiResponse {
         this.page = page;
     }
 
-    public void setResults(List<ApiResponseResult> results) {
+    public void setListApiResponseResults(List<ApiResponseResult> results) {
         this.results = results;
     }
 
