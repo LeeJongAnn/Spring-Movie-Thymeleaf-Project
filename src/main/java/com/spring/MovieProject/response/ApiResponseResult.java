@@ -2,10 +2,11 @@ package com.spring.MovieProject.response;
 
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.Date;
 
-@Data
+@Getter
 public class ApiResponseResult {
 
     private String adult;
@@ -17,5 +18,17 @@ public class ApiResponseResult {
     private String vote_average;
     private String vote_count;
 
-
+    @Override
+    public String toString() {
+        return "ApiResponseResult{" +
+                "adult='" + adult + '\'' +
+                ", original_name='" + original_name + '\'' +
+                ", overview='" + overview + '\'' +
+                ", popularity='" + popularity + '\'' +
+                ", poster_path='" + poster_path + '\'' +
+                ", first_air_date=" + first_air_date +
+                ", vote_average='" + vote_average + '\'' +
+                ", vote_count='" + vote_count + '\'' +
+                '}';
+    }
 }
