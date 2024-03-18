@@ -21,3 +21,5 @@
 ### Day 5 24-03-18
 
 1. User 엔티티 생성
+
+<img src="README-image/img.png" width=300 height=300 >
