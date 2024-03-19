@@ -1,10 +1,7 @@
 package com.spring.MovieProject.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -19,12 +16,15 @@ public class User {
     private Integer id;
 
     @NotNull
+    @Column(length = 15,nullable = false)
     private String username;
 
     @NotNull
+    @Column(length = 25,nullable = false)
     private String email;
 
     @NotNull
+    @Column(length = 300,nullable = false)
     private String password;
 
     public User() {

@@ -22,4 +22,9 @@
 
 1. User 엔티티 생성
 
-<img src="README-image/img.png" width=300 height=300 >
+<img src="README-image/img.png" width=500 height=500 >
+
+
+### Day 5 24-03-19
+
+1. Index화면의 fragments 분리 
