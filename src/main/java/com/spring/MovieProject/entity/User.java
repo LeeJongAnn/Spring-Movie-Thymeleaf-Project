@@ -23,9 +23,6 @@ public class User {
     private String email;
 
 
-    @Embedded
-    private Address address;
-
     @NotNull
     @Column(length = 300,nullable = false)
     private String password;
