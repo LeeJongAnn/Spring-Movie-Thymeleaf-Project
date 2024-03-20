@@ -32,7 +32,7 @@ public class MainController {
     @GetMapping("/v1/board")
     public String main(Model model, User user) {
 
-        model.addAttribute("user", user);
+        model.addAttribute("User", user);
         return "SignUp/signup";
     }
 }

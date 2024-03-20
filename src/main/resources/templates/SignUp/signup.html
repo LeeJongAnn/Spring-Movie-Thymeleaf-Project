@@ -12,27 +12,23 @@
 
 <div class="container mt-5">
 
-    <form th:action="@{/v1/signUp}"  th:object="${user}" method="post" class="row g-3">
+    <form th:action="@{/v1/signUp}"  th:object="${User}" method="post" class="row g-3">
         <div class="col-md-6">
             <label for="input-id" class="form-label">아이디</label>
             <input type="text" th:field="*{username}" class="form-control" id="input-id">
         </div>
-<!--        <div class="col-md-6">-->
-<!--            <label for="input-password" class="form-label">비밀번호</label>-->
-<!--            <input type="password" class="form-control" id="input-password">-->
-<!--        </div>-->
+        <div class="col-md-6">
+            <label for="input-password" class="form-label">비밀번호</label>
+            <input type="password" th:field="*{password}" class="form-control" id="input-password">
+        </div>
 <!--        <div class="col-12">-->
 <!--            <label for="inputAddress" class="form-label">주소</label>-->
-<!--            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">-->
+<!--            <input type="text" th:field="*{address}" class="form-control" id="inputAddress" placeholder="1234 Main St">-->
 <!--        </div>-->
-<!--        <div class="col-12">-->
-<!--            <label for="inputAddress2" class="form-label">Address 2</label>-->
-<!--            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">-->
-<!--        </div>-->
-<!--        <div class="col-md-6">-->
-<!--            <label for="inputCity" class="form-label">City</label>-->
-<!--            <input type="text" class="form-control" id="inputCity">-->
-<!--        </div>-->
+        <div class="col-md-6">
+            <label for="input-email" class="form-label">이메일</label>
+            <input type="email" th:field="*{email}"class="form-control" id="input-email">
+        </div>
 <!--        <div class="col-md-4">-->
 <!--            <label for="inputState" class="form-label">State</label>-->
 <!--            <select id="inputState" class="form-select">-->
@@ -43,14 +39,6 @@
 <!--        <div class="col-md-2">-->
 <!--            <label for="inputZip" class="form-label">Zip</label>-->
 <!--            <input type="text" class="form-control" id="inputZip">-->
-<!--        </div>-->
-<!--        <div class="col-12">-->
-<!--            <div class="form-check">-->
-<!--                <input class="form-check-input" type="checkbox" id="gridCheck">-->
-<!--                <label class="form-check-label" for="gridCheck">-->
-<!--                    Check me out-->
-<!--                </label>-->
-<!--            </div>-->
 <!--        </div>-->
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Sign in</button>
