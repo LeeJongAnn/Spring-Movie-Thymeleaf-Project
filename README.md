@@ -28,3 +28,9 @@
 ### Day 5 24-03-19
 
 1. Index화면의 fragments 분리 
+
+### Day 6 24-03-20
+
+1. 회원가입 폼 작성 및 테스트 (Thymeleaf)
+2. fragments로 분리하기
+3. 게시글 관련 엔티티 작성

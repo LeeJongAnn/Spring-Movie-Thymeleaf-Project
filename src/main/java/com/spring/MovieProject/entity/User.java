@@ -10,7 +10,6 @@ import lombok.Getter;
 @Getter
 public class User {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -23,9 +22,15 @@ public class User {
     @Column(length = 25,nullable = false)
     private String email;
 
+
+    @Embedded
+    private Address address;
+
     @NotNull
     @Column(length = 300,nullable = false)
     private String password;
+
+
 
     public User() {
     }

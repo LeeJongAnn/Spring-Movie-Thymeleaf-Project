@@ -1,6 +1,7 @@
 package com.spring.MovieProject.controller;
 
 
+import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.response.ApiResponse;
 import com.spring.MovieProject.response.ApiResponseResult;
 import com.spring.MovieProject.service.movieServiceImpl;
@@ -26,5 +27,12 @@ public class MainController {
         model.addAttribute("popularMovieList", popularMovieList);
         model.addAttribute("address", address);
         return "index";
+    }
+
+    @GetMapping("/v1/board")
+    public String main(Model model, User user) {
+
+        model.addAttribute("user", user);
+        return "SignUp/signup";
     }
 }
