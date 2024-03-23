@@ -8,7 +8,6 @@ import lombok.ToString;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ApiResponse {
 
 

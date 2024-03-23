@@ -8,6 +8,7 @@ import java.util.Date;
 
 public class ApiResponseResult {
 
+    private Integer id;
     private String adult;
     private String title;
     private String original_name;
@@ -17,6 +18,14 @@ public class ApiResponseResult {
     private String release_date;
     private float vote_average;
     private float vote_count;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getAdult() {
         return adult;

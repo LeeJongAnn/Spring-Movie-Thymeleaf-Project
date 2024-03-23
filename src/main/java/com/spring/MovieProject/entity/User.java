@@ -7,7 +7,11 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity(name = "User")
+@Table(indexes = {@Index(name = "IDX_USER_EMAIL", columnList = "username,email")})
 public class User {
 
     @Id
@@ -28,7 +32,6 @@ public class User {
     private String password;
 
 
-
     public User() {
     }
 
@@ -38,6 +41,9 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL , orphanRemoval = true)
+    private List<Board> board = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -69,6 +75,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Board> getBoard() {
+        return board;
+    }
+
+    public void setBoard(List<Board> board) {
+        this.board = board;
     }
 
     @Override

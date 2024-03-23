@@ -3,11 +3,14 @@ package com.spring.MovieProject.controller;
 
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.response.ApiResponse;
+import com.spring.MovieProject.response.details.ApiResponseDetailsMovie;
 import com.spring.MovieProject.service.movieServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -24,6 +27,16 @@ public class MainController {
         model.addAttribute("popularMovieList", popularMovieList);
         model.addAttribute("address", address);
         return "index";
+    }
+
+    @GetMapping("/v1/details/{id}")
+    public String getMovieDetails(Model model, @PathVariable(name = "id") Integer id) {
+
+        ApiResponseDetailsMovie movieDetails = movieService.getMovieDetails(id);
+        model.addAttribute("movieDetails", movieDetails);
+        model.addAttribute("address", address);
+        model.addAttribute("movie-detail-id", id);
+        return "detail";
     }
 
     @GetMapping("/v1/board")
