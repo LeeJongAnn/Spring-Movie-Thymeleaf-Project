@@ -5,6 +5,8 @@ import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class userServiceImpl implements userService{
 
@@ -20,5 +22,12 @@ public class userServiceImpl implements userService{
 
         User saveUser = userRepository.save(user);
 
+    }
+
+    @Override
+    public List<User> listUsers() {
+        List<User> usersList = (List<User>) userRepository.findAll();
+
+        return usersList;
     }
 }

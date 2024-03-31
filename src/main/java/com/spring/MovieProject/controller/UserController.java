@@ -2,19 +2,20 @@ package com.spring.MovieProject.controller;
 
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.service.user.userServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.view.RedirectView;
+
+import java.util.List;
 
 @Controller
-public class SignController {
+public class UserController {
 
 
     private userServiceImpl userService;
 
-    public SignController(userServiceImpl userService) {
+    public UserController(userServiceImpl userService) {
         this.userService = userService;
     }
 
@@ -25,5 +26,16 @@ public class SignController {
         System.out.println(user);
         return "redirect:/v1/popular";
     }
+
+
+    @GetMapping("/v1/userList")
+    public String signUpUser(Model model, User user) {
+
+        List<User> usersList = userService.listUsers();
+
+        model.addAttribute("usersList", usersList);
+        return "List/userList";
+    }
+
 
 }
