@@ -9,4 +9,5 @@ public interface movieService {
 
     public ApiResponseDetailsMovie getMovieDetails(Integer id);
 
+
 }

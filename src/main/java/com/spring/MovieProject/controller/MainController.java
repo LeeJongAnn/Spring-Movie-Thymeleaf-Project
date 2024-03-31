@@ -38,8 +38,8 @@ public class MainController {
         return "detail";
     }
 
-    @GetMapping("/v1/board")
-    public String main(Model model, User user) {
+    @GetMapping("/v1/signUser")
+    public String signUp(Model model, User user) {
 
         model.addAttribute("User", user);
         return "SignUp/signup";

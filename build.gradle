@@ -19,12 +19,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-devtools:3.2.4'
 	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.2.3'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '3.2.3'
 	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.3.0'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.3'
-
+	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.2.4'
 
 }
 

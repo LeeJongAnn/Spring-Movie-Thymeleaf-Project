@@ -35,3 +35,8 @@
 1. 영화 디테일 페이지 작성 중 
 2. User 엔티티에 INDEX 적용 (username , email)
 
+### Day 8 24-03-31
+1. 회원가입 폼 작성 완료
+<img src="README-image/img-sign.png" width=500 height=500 >
+
+

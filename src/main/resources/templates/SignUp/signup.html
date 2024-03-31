@@ -14,23 +14,27 @@
 
     <form th:action="@{/v1/signUp}" th:object="${User}" method="post" class="row g-3">
 
-        <div class="border border-dark" style="margin: 0 auto; padding: 25px; width: 700px; height: 500px;">
+        <div class="border border-rounded border-dark rounded-3"
+             style="margin: 0 auto; padding: 25px; width: 700px; height: 500px;">
             <div class="text-center">회 원 가 입</div>
-
             <div class="mb-3">
-                <label class="form-label">유저이름</label>
-                <input type="text" placeholder="영문 아이디를 입력하세요" id="username" pattern="^[a-zA-Z0-9]+$" data-current=""
-                       class="form-control" th:field="*{username}" required minlength="3">
+                <label for="UsernameInput" class="form-label">사용자명</label>
+                <input type="text" class="form-control" th:field="*{username}" aria-describedby="emailHelp">
             </div>
 
             <div class="mb-3">
-                <label class="form-label">비밀번호</label>
-                <input th:if="${user.id != null}" type="password" class="form-control" th:field="*{password}" required
-                       minlength="3">
-                <input th:if="${user.id == null}" type="password" class="form-control" th:field="*{password}" required
-                       minlength="3" placeholder="비밀번호를 입력하세요">
+                <label for="email" class="form-label">이메일</label>
+                <input type="email" class="form-control" th:field="*{email}" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
-
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">비밀번호</label>
+                <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
             <div class="text-center">
                 <button type="submit" value="저장" id="save-user" class="btn btn-primary">저장</button>
             </div>
