@@ -31,15 +31,18 @@ public class User {
     @Column(length = 300,nullable = false)
     private String password;
 
+    private boolean enabled;
+
 
     public User() {
     }
 
-    public User(Integer id, String username, String email, String password) {
+    public User(Integer id, String username, String email, String password,boolean enabled) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.enabled = enabled;
     }
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL , orphanRemoval = true)
@@ -81,6 +84,14 @@ public class User {
         return board;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public void setBoard(List<Board> board) {
         this.board = board;
     }
@@ -92,6 +103,8 @@ public class User {
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", board=" + board +
                 '}';
     }
 }

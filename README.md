@@ -40,3 +40,7 @@
 <img src="README-image/img-sign.png" width=500 height=500 >
 
 
+### Day 8 24-04-02
+1. table 형태 변경 (조금 더 깔끔하게)
+2. Bootstrap Icon 추가
+3. User List에서 삭제 기능 추가 ( 쓰레기통 누를 시 삭제 됨 )
