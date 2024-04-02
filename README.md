@@ -44,3 +44,10 @@
 1. table 형태 변경 (조금 더 깔끔하게)
 2. Bootstrap Icon 추가
 3. User List에서 삭제 기능 추가 ( 쓰레기통 누를 시 삭제 됨 )
+
+추가
+4. 게시판 기본적인 형태 작성
+5. 권한 설정을 위한 Role 엔티티 추가
+![img.png](img.png)
+![img_1.png](img_1.png)
+![img_2.png](img_2.png)
