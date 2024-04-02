@@ -34,7 +34,16 @@ public class User {
     private boolean enabled;
 
 
+    @OneToMany
+    private List<Role> role = new ArrayList<>();
+
+
     public User() {
+    }
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
     }
 
     public User(Integer id, String username, String email, String password,boolean enabled) {
@@ -43,6 +52,11 @@ public class User {
         this.email = email;
         this.password = password;
         this.enabled = enabled;
+    }
+
+
+    public User(Integer id) {
+        this.id = id;
     }
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL , orphanRemoval = true)
@@ -98,13 +112,14 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", enabled=" + enabled +
-                ", board=" + board +
-                '}';
+        return this.username;
+    }
+
+    public List<Role> getRole() {
+        return role;
+    }
+
+    public void setRole(List<Role> role) {
+        this.role = role;
     }
 }

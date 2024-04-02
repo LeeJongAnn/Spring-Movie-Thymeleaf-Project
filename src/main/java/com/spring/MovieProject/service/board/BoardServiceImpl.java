@@ -20,13 +20,16 @@ public class BoardServiceImpl implements boardService {
     }
 
     @Override
-    public Board createBoard() {
-        return null;
+    public Board createBoard(Board board) {
+
+        Board saveBoard = boardRepository.save(board);
+        return saveBoard;
     }
 
     @Override
     public List<Board> getBoardList() {
-        return null;
+        List<Board> boardList = (List<Board>) boardRepository.findAll();
+        return boardList;
     }
 
     @Override

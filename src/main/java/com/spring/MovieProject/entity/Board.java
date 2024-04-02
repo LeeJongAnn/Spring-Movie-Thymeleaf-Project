@@ -2,6 +2,10 @@ package com.spring.MovieProject.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.util.Date;
 
 @Entity
 public class Board {
@@ -22,14 +26,19 @@ public class Board {
     private User user;
 
 
+    @CreationTimestamp
+    private Date creationTime;
+
     public Board() {
     }
 
+    @Builder
     public Board(Integer id, String title, String content, User user) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.user = user;
+        this.creationTime = new Date();
     }
 
     public Integer getId() {
@@ -62,5 +71,13 @@ public class Board {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+        this.creationTime = creationTime;
     }
 }
