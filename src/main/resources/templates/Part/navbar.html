@@ -1,4 +1,14 @@
+<!-- 2024 4/5
+ author: LeeJongAnn
+ description: when you want to use thymeleaf-springSecurity , you have to add below xmlns namespace
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+-->
+
+<html th:fragment="security" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="navigation">
+
     <div class="container-fluid">
         <a class="navbar-brand" href="#">영화 리뷰</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -11,14 +21,28 @@
                     <a class="nav-link" th:href="@{/v1/popular}">인기영화순</a>
                 </li>
 
-                <li class="nav-item">
+
+                <!--              2024 4/5
+                                    author: LeeJongAnn
+                                    description: login person can only see when you use sec:authorize="isAuthenticated()"
+                                    -->
+                <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/v1/userList}">사용자 리스트</a>
                 </li>
-                <li class="nav-item">
+                <!--              2024 4/5
+                                    author: LeeJongAnn
+                                    description: login person can only see when you use sec:authorize="isAuthenticated()"
+                                    -->
+
+                <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/v1/board}">게시판</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/v1/signUser}">회원가입</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/v1/login-page}">로그인</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

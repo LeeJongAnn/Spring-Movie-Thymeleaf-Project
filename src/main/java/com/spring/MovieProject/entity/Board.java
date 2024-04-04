@@ -80,4 +80,15 @@ public class Board {
     public void setCreationTime(Date creationTime) {
         this.creationTime = creationTime;
     }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", user=" + user +
+                ", creationTime=" + creationTime +
+                '}';
+    }
 }

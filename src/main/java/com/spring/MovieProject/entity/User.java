@@ -55,9 +55,6 @@ public class User {
     }
 
 
-    public User(Integer id) {
-        this.id = id;
-    }
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Board> board = new ArrayList<>();

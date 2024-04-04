@@ -4,6 +4,7 @@ package com.spring.MovieProject.service.user;
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.exception.UserNotFoundException;
 import com.spring.MovieProject.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,14 +15,18 @@ public class userServiceImpl implements userService{
 
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public userServiceImpl(UserRepository userRepository) {
+    public userServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public void signUp(User user) {
-
+        String password = user.getPassword();
+        String encode = passwordEncoder.encode(password);
+        user.setPassword(encode);
         User saveUser = userRepository.save(user);
 
     }

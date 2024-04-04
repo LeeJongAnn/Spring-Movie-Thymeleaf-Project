@@ -16,6 +16,7 @@ repositories {
 }
 
 dependencies {
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '3.2.4'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -26,6 +27,7 @@ dependencies {
 	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.3.0'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.3'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '3.2.4'
+	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity6', version: '3.1.2.RELEASE'
 
 }
 

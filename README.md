@@ -51,3 +51,10 @@
 ![img.png](img.png)
 ![img_1.png](img_1.png)
 ![img_2.png](img_2.png)
+
+
+### Day 24-04-02 ~ 24-04-04
+1. Security 설정 추가 
+2. 로그인 기능 추가 
+3. 비밀번호 암호화 추가
+

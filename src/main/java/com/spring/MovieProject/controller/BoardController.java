@@ -4,6 +4,7 @@ package com.spring.MovieProject.controller;
 import com.spring.MovieProject.entity.Board;
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.service.board.BoardServiceImpl;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,16 +25,17 @@ public class BoardController {
      * */
 
     @GetMapping("/v1/board")
-    public String boardList(Model model) {
+    public String boardList(Model model,@AuthenticationPrincipal User user) {
 
         List<Board> boardList = boardService.getBoardList();
         model.addAttribute("board", boardList);
+        model.addAttribute("user", user);
         return "Board/boardList";
     }
 
 
     @PostMapping("/v1/createBoard")
-    public String boardCreate(Model model,Board board) {
+    public String boardCreate(Model model, Board board, @AuthenticationPrincipal User user) {
 
         boardService.createBoard(board);
         return "redirect:/Board/boardList";
