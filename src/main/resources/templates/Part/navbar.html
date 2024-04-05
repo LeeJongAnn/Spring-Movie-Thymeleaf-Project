@@ -37,12 +37,16 @@
                 <li sec:authorize="isAuthenticated()" class="nav-item">
                     <a class="nav-link" th:href="@{/v1/board}">게시판</a>
                 </li>
-                <li class="nav-item">
+                <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/v1/signUser}">회원가입</a>
                 </li>
 
-                <li class="nav-item">
+                <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/v1/login-page}">로그인</a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()" class="nav-item">
+                    <a class="nav-link" th:href="@{/v1/logout}">로그아웃</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -59,10 +63,8 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            <div sec:authentication style="align-items: center; color:azure; " >유저명: [[${#authentication.getPrincipal()}]]</div> &nbsp;&nbsp;
+            <div sec:authentication style="align-items: center; color:bisque; " >계정 권한: [[${#authentication.getCredentials()}]]</div>
         </div>
     </div>
 </nav>

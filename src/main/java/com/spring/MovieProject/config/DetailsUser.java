@@ -55,4 +55,8 @@ public class DetailsUser implements UserDetails {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return this.getUsername();
+    }
 }

@@ -13,28 +13,19 @@
 
 <div class="container mt-5">
 
-    <form th:action="@{/v1/create}" th:object="${Board}" method="post" class="row g-3">
+    <form th:action="@{/v1/createBoard}" th:object="${board}" method="post" class="row g-3">
 
-        <div class="border border-rounded border-dark rounded-3"
-             style="margin: 0 auto; padding: 25px; width: 700px; height: 500px;">
-            <div class="text-center">게시글 작성</div>
+        <h5 class="my-3 border-bottom pb-2">게시글 등록</h5>
             <div class="mb-3">
-                <label for="UsernameInput" class="form-label">제목</label>
-                <input type="text" class="form-control"  aria-describedby="emailHelp">
+                <label for="subject" class="form-label">제목</label>
+                <input type="text" name="subject" id="subject" th:field="*{title}" class="form-control">
             </div>
-
             <div class="mb-3">
-                <label for="email" class="form-label">내용</label>
-                <input type="email" class="form-control"  aria-describedby="emailHelp">
+                <label for="content" class="form-label">내용</label>
+                <textarea name="content" id="content" class="form-control" th:field="*{content}" rows="10"></textarea>
             </div>
-            <div class="text-center">
-                <button type="submit" value="저장" id="save-user" class="btn btn-primary">저장</button>
-                <button type="button" value="취소"  class="btn btn-danger">취소</button>
-            </div>
-        </div>
+        <button type="submit" value="저장하기" class="btn btn-primary my-2" id="post-button" style="width: 200px;">게시글 등록</button>
     </form>
-    <div class="array" style="position:relative; left: 375px; bottom: 38px;">
-    </div>
 </div>
 <script>
 

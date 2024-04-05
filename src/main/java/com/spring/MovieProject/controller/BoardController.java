@@ -33,13 +33,23 @@ public class BoardController {
         return "Board/boardList";
     }
 
-
+    /*
+    * 24-04-05
+    * author: LeeJongAnn
+    * description: someone who login user can create post , and finished post redirection in boardList url /v1/board
+    * */
     @PostMapping("/v1/createBoard")
     public String boardCreate(Model model, Board board, @AuthenticationPrincipal User user) {
 
         boardService.createBoard(board);
-        return "redirect:/Board/boardList";
+        return "redirect:/v1/board";
     }
+
+    /*
+     * 24-04-05
+     * author: LeeJongAnn
+     * description: someone who login user can see post createForm
+     * */
     @GetMapping("/v1/boardForm")
     public String boardCreateForm(Model model,Board board) {
         model.addAttribute("board",board);
