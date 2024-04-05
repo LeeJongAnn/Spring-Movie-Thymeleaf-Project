@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@Getter
 public class DetailsUser implements UserDetails {
 
     private User user;
@@ -58,5 +57,13 @@ public class DetailsUser implements UserDetails {
     @Override
     public String toString() {
         return this.getUsername();
+    }
+
+    public User getDetailsUser() {
+        return user;
+    }
+
+    public void setDetailsUser(User user) {
+        this.user = user;
     }
 }

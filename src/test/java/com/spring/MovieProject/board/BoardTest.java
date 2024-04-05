@@ -35,16 +35,15 @@ public class BoardTest {
     @Test
     @DisplayName("게시글 임시로 생성")
     public void boardEntityTest() throws UserNotFoundException {
-
-        User user = userRepository.findById(8).orElseThrow(()-> new UserNotFoundException("해당 유저가 존재하지 않습니다."));
-
-        Board board = new Board().builder()
-                .title("윤동주의 \"서시\"")
-                .content("한국 현대 시의 거장으로 평가받는 윤동주의 대표작 중 하나로, 그의 시적 세계와 철학을 잘 보여주는 작품입니다.")
-                .user(user)
-                .build();
-
-        boardRepository.save(board);
+//
+//        User user = userRepository.findById(8).orElseThrow(()-> new UserNotFoundException("해당 유저가 존재하지 않습니다."));
+//
+//        Board board = new Board().title("윤동주의 서시")
+//                .content("한국 현대 시의 거장으로 평가받는 윤동주의 대표작 중 하나로, 그의 시적 세계와 철학을 잘 보여주는 작품입니다.")
+//                .user(user)
+//                .build();
+//
+//        boardRepository.save(board);
     }
 
 }

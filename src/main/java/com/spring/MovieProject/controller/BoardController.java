@@ -1,6 +1,7 @@
 package com.spring.MovieProject.controller;
 
 
+import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.service.board.BoardServiceImpl;
@@ -39,9 +40,8 @@ public class BoardController {
     * description: someone who login user can create post , and finished post redirection in boardList url /v1/board
     * */
     @PostMapping("/v1/createBoard")
-    public String boardCreate(Model model, Board board, @AuthenticationPrincipal User user) {
-
-        boardService.createBoard(board);
+    public String boardCreate(Model model, Board board, @AuthenticationPrincipal DetailsUser user) {
+        boardService.createBoard(board,user);
         return "redirect:/v1/board";
     }
 

@@ -1,7 +1,9 @@
 package com.spring.MovieProject.service.board;
 
 
+import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
+import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.repository.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,8 +22,8 @@ public class BoardServiceImpl implements boardService {
     }
 
     @Override
-    public Board createBoard(Board board) {
-
+    public Board createBoard(Board board, DetailsUser user) {
+        board.setUser(user.getDetailsUser());
         Board saveBoard = boardRepository.save(board);
         return saveBoard;
     }
