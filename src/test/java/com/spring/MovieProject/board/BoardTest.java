@@ -13,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 
@@ -44,6 +46,24 @@ public class BoardTest {
 //                .build();
 //
 //        boardRepository.save(board);
+    }
+
+
+    @Test
+    @DisplayName("LocalDateTime 객체 원하는 형태로 변경하기")
+    public void testTime() {
+        String customizerFormat = "yyyy년 MM월 dd일 HH시 mm분 ss초";
+
+        /*
+        * author: LeeJongAnn
+        * description: Changes the class of LocalDateTime at the current time to the pattern of the cutomizer.
+        * */
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(customizerFormat);
+        String format = now.format(dateTimeFormatter);
+        System.out.println(now);
+        System.out.println(format);
+
     }
 
 }

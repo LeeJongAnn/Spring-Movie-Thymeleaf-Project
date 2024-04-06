@@ -73,3 +73,8 @@
 
 ![img_7.png](img_7.png)
 
+### Day 24-04-06
+
+1. 게시글 작성 시 타임 포맷 변경 ( Date -> String ) changeTimeFormatNow 추가
+
+![img_8.png](img_8.png)

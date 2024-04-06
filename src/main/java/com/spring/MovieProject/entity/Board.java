@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -26,8 +27,7 @@ public class Board {
     private User user;
 
 
-    @CreationTimestamp
-    private Date creationTime;
+    private String creationTime;
 
     public Board() {
     }
@@ -38,7 +38,6 @@ public class Board {
         this.title = title;
         this.content = content;
         this.user = user;
-        this.creationTime = new Date();
     }
 
     public Integer getId() {
@@ -73,11 +72,11 @@ public class Board {
         this.user = user;
     }
 
-    public Date getCreationTime() {
+    public String getCreationTime() {
         return creationTime;
     }
 
-    public void setCreationTime(Date creationTime) {
+    public void setCreationTime(String creationTime) {
         this.creationTime = creationTime;
     }
 
@@ -91,4 +90,6 @@ public class Board {
                 ", creationTime=" + creationTime +
                 '}';
     }
+
+
 }
