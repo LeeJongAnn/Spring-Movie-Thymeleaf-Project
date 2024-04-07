@@ -5,7 +5,7 @@ import com.spring.MovieProject.response.details.ApiResponseDetailsMovie;
 
 public interface movieService {
 
-    public ApiResponse getPopular();
+    public ApiResponse getPopular(int pageNum);
 
     public ApiResponseDetailsMovie getMovieDetails(Integer id);
 

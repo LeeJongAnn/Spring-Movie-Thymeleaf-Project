@@ -55,8 +55,8 @@ public class SecurityConfig {
                                 .anyRequest().permitAll()
                 ).formLogin((login) -> login.loginPage("/login")
                         .usernameParameter("email")
-                        .defaultSuccessUrl("/v1/popular"))
-                .logout(logout -> logout.logoutUrl("/v1/logout").logoutSuccessUrl("/v1/popular"));
+                        .defaultSuccessUrl("/v1/popular/1"))
+                .logout(logout -> logout.logoutUrl("/v1/logout").logoutSuccessUrl("/v1/popular/1"));
 
         http.authenticationProvider(authenticationProvider());
         return http.build();

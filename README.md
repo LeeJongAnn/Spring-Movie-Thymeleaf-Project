@@ -78,3 +78,9 @@
 1. 게시글 작성 시 타임 포맷 변경 ( Date -> String ) changeTimeFormatNow 추가
 
 ![img_8.png](img_8.png)
+
+### Day 24-04-07
+
+1. api로 받아온 데이터의 페이징 처리 추가
+2. 페이징 처리로 인한 주소값들 수정
+![img_9.png](img_9.png)

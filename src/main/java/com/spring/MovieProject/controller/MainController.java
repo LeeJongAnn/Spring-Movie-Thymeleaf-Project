@@ -19,12 +19,16 @@ public class MainController {
 
     private String address = "https://image.tmdb.org/t/p/w500";
 
-    @GetMapping("/v1/popular")
-    public String getPopular(Model model) {
+    @GetMapping("/v1/popular/{pageNum}")
+    public String getPopular(Model model,@PathVariable("pageNum") int pageNum) {
 
-        ApiResponse popularMovieList = movieService.getPopular();
+        ApiResponse popularMovieList = movieService.getPopular(pageNum);
+        int totalPages = popularMovieList.getTotal_pages();
+        System.out.println(totalPages);
         model.addAttribute("popularMovieList", popularMovieList);
         model.addAttribute("address", address);
+        model.addAttribute("pageNum", pageNum);
+        model.addAttribute("totalPages", totalPages);
         return "index";
     }
 

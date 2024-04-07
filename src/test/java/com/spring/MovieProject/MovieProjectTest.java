@@ -36,4 +36,15 @@ public class MovieProjectTest {
         ApiResponseDetailsMovie body = entity.getBody();
         System.out.println(body);
     }
+
+    @Test
+    @DisplayName("영화 정보 페이지 파라미터 테스트")
+    public void apiPageTest() {
+
+        int pageNum = 3;
+        ResponseEntity<ApiResponse> entity = rt.getForEntity("https://api.themoviedb.org/3/movie/popular?language=ko-KR&page="+ pageNum +"&api_key=" + apikey, ApiResponse.class);
+        ApiResponse body = entity.getBody();
+        List<ApiResponseResult> listApiResponseResults = body.getMovieList();
+        System.out.println(listApiResponseResults);
+    }
 }
