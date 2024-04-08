@@ -1,6 +1,7 @@
 package com.spring.MovieProject.config;
 
 import com.spring.MovieProject.entity.User;
+import com.spring.MovieProject.exception.UserNotFoundException;
 import com.spring.MovieProject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +22,10 @@ public class DetailsUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) {
 
 
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("해당하는 유저가 존재하지 않습니다."));
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            throw new UserNotFoundException();
+        }
         return new DetailsUser(user);
 
     }

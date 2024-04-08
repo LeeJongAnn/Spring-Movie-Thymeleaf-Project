@@ -2,8 +2,11 @@ package com.spring.MovieProject.service.user;
 
 
 import com.spring.MovieProject.entity.User;
+import com.spring.MovieProject.exception.CustomException;
+import com.spring.MovieProject.exception.SignUpIsDuplicatedException;
 import com.spring.MovieProject.exception.UserNotFoundException;
 import com.spring.MovieProject.repository.UserRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,11 @@ public class userServiceImpl implements userService{
 
     @Override
     public void signUp(User user) {
+
+        User dbUser = userRepository.findByEmail(user.getEmail());
+        if (dbUser != null) {
+            throw new SignUpIsDuplicatedException();
+        }
         String password = user.getPassword();
         String encode = passwordEncoder.encode(password);
         user.setPassword(encode);
