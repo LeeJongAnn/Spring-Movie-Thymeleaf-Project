@@ -84,3 +84,7 @@
 1. api로 받아온 데이터의 페이징 처리 추가
 2. 페이징 처리로 인한 주소값들 수정
 ![img_9.png](img_9.png)
+
+### Day 24-04-09
+1. Board 게시글 작성자 표시 안되는 오류 수정
+2. Board 게시글 삭제 시 redirectAttribute 추가

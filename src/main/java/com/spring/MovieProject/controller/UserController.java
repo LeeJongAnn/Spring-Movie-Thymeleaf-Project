@@ -29,7 +29,7 @@ public class UserController {
 
         userService.signUp(user);
         System.out.println(user);
-        return "redirect:/v1/popular";
+        return "redirect:/v1/popular/1";
     }
 
 
@@ -49,6 +49,7 @@ public class UserController {
         redirectAttributes.addFlashAttribute("result", "해당하는 유저가 삭제되었습니다. :" + id);
         return "redirect:/v1/userList";
     }
+
 
 
 }

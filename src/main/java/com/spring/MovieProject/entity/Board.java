@@ -1,7 +1,9 @@
 package com.spring.MovieProject.entity;
 
 
+import com.spring.MovieProject.config.DetailsUser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,10 +18,13 @@ public class Board {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @NotNull(message = "title have to some character")
+    @Column(nullable = false)
     private String title;
 
     @Lob
+    @NotNull(message = "content have to some character")
+    @Column(nullable = false)
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -71,6 +76,7 @@ public class Board {
     public void setUser(User user) {
         this.user = user;
     }
+
 
     public String getCreationTime() {
         return creationTime;

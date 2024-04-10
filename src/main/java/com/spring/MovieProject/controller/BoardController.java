@@ -4,12 +4,17 @@ package com.spring.MovieProject.controller;
 import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
 import com.spring.MovieProject.entity.User;
+import com.spring.MovieProject.exception.BoardNotFoundException;
+import com.spring.MovieProject.exception.CustomException;
 import com.spring.MovieProject.service.board.BoardServiceImpl;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -54,5 +59,14 @@ public class BoardController {
     public String boardCreateForm(Model model,Board board) {
         model.addAttribute("board",board);
         return "Board/boardup";
+    }
+
+
+    @GetMapping("/v1/delete-board/{id}")
+    public String boardDeleteForm(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
+        boardService.deleteBoard(id);
+        String message = "해당하는 게시글이 삭제되었습니다 : " + id;
+        redirectAttributes.addFlashAttribute("result", message);
+        return "redirect:/v1/board";
     }
 }

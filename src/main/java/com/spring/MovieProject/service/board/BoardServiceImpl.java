@@ -4,7 +4,10 @@ package com.spring.MovieProject.service.board;
 import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
 import com.spring.MovieProject.entity.User;
+import com.spring.MovieProject.exception.CustomException;
+import com.spring.MovieProject.exception.UserNotFoundException;
 import com.spring.MovieProject.repository.BoardRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class BoardServiceImpl implements boardService {
 
 
@@ -30,6 +34,7 @@ public class BoardServiceImpl implements boardService {
     public Board createBoard(Board board, DetailsUser user) {
 
         board.setCreationTime(changeTimeFormatNow());
+        board.setUser(user.getDetailsUser());
         Board saveBoard = boardRepository.save(board);
         return saveBoard;
     }
@@ -46,8 +51,8 @@ public class BoardServiceImpl implements boardService {
     }
 
     @Override
-    public void deleteBoard() {
-
+    public void deleteBoard(Integer id) {
+        boardRepository.deleteById(id);
     }
 
     @Override

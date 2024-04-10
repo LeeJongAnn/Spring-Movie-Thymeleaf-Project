@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class userServiceImpl implements userService{
+public class userServiceImpl implements userService {
 
 
     private final UserRepository userRepository;
@@ -73,4 +73,5 @@ public class userServiceImpl implements userService{
         }
 
     }
+
 }
