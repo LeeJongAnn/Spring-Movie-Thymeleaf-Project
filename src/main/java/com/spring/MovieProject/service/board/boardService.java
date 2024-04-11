@@ -17,7 +17,7 @@ public interface boardService {
 
     public void deleteBoard(Integer id);
 
-    public Board getBoard();
+    public Board getBoard(Integer id);
 
 
 

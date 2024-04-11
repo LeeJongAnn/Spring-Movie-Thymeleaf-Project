@@ -40,7 +40,7 @@
 </table>
 
 <div class="modal" tabindex="-1" id="myModalShow">
-    <div class="modal-dialog">
+    <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="show-modal-title"></h5>
@@ -61,24 +61,18 @@
 <script type="text/javascript">
     let title = "사용자 삭제";
     let content = "해당하는 사용자를 삭제하시겠습니까?";
-    window.onload = function() {
         document.addEventListener("DOMContentLoaded", function () {
             const collection = document.getElementById("delete-modal");
             collection.addEventListener('click', function () {
-
-                var myModal = document.getElementById('myModalShow');
                 textChange(title, content);
-                myModal.showModal('show');
-
             })
-
-
         });
 
         function textChange(title, content) {
             document.getElementById("show-modal-title").innerHTML = title;
             document.getElementById("show-modal-body").innerHTML = content;
-        }
+            var myModal = new bootstrap.Modal(document.getElementById('myModalShow'));
+            myModal.show()
     }
 </script>
 </body>

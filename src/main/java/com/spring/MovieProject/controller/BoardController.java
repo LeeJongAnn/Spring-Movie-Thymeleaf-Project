@@ -31,7 +31,7 @@ public class BoardController {
      * */
 
     @GetMapping("/v1/board")
-    public String boardList(Model model,@AuthenticationPrincipal User user) {
+    public String boardList(Model model, @AuthenticationPrincipal User user) {
 
         List<Board> boardList = boardService.getBoardList();
         model.addAttribute("board", boardList);
@@ -40,13 +40,13 @@ public class BoardController {
     }
 
     /*
-    * 24-04-05
-    * author: LeeJongAnn
-    * description: someone who login user can create post , and finished post redirection in boardList url /v1/board
-    * */
+     * 24-04-05
+     * author: LeeJongAnn
+     * description: someone who login user can create post , and finished post redirection in boardList url /v1/board
+     * */
     @PostMapping("/v1/createBoard")
     public String boardCreate(Model model, Board board, @AuthenticationPrincipal DetailsUser user) {
-        boardService.createBoard(board,user);
+        boardService.createBoard(board, user);
         return "redirect:/v1/board";
     }
 
@@ -56,8 +56,8 @@ public class BoardController {
      * description: someone who login user can see post createForm
      * */
     @GetMapping("/v1/boardForm")
-    public String boardCreateForm(Model model,Board board) {
-        model.addAttribute("board",board);
+    public String boardCreateForm(Model model, Board board) {
+        model.addAttribute("board", board);
         return "Board/boardup";
     }
 
@@ -68,5 +68,14 @@ public class BoardController {
         String message = "해당하는 게시글이 삭제되었습니다 : " + id;
         redirectAttributes.addFlashAttribute("result", message);
         return "redirect:/v1/board";
+    }
+
+
+    @GetMapping("/v1/get-board/{id}")
+    public String boardGetDetail(@PathVariable("id") Integer id) {
+
+        Board board = boardService.getBoard(id);
+
+        return "Board/boardConfirm";
     }
 }

@@ -4,6 +4,7 @@ package com.spring.MovieProject.service.board;
 import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
 import com.spring.MovieProject.entity.User;
+import com.spring.MovieProject.exception.BoardNotFoundException;
 import com.spring.MovieProject.exception.CustomException;
 import com.spring.MovieProject.exception.UserNotFoundException;
 import com.spring.MovieProject.repository.BoardRepository;
@@ -56,8 +57,9 @@ public class BoardServiceImpl implements boardService {
     }
 
     @Override
-    public Board getBoard() {
-        return null;
+    public Board getBoard(Integer id) {
+        Board board = boardRepository.findById(id).orElseThrow(() -> new BoardNotFoundException());
+        return board;
     }
 
     /*

@@ -23,7 +23,7 @@
     <tbody>
     <tr th:each="post : ${board}">
         <td>[[${post.id}]]</td>
-        <td>[[${post.title}]]</td>
+        <td><a th:href="@{'/v1/get-board/' + ${post.id}}">[[${post.title}]]</a></td>
         <td>[[${post.content}]]</td>
         <td>[[${post.user}]]</td>
         <td>[[${post.creationTime}]]</td>

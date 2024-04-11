@@ -49,8 +49,8 @@
 4. 게시판 기본적인 형태 작성
 5. 권한 설정을 위한 Role 엔티티 추가
 ![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
+![img_1.png](README-image/img_1.png)
+![img_2.png](README-image/img_2.png)
 
 
 ### Day 24-04-02 ~ 24-04-04
@@ -65,26 +65,31 @@
 3. 게시글 작성 폼 추가 
 4. 게시글 작성 기능 추가 
 
-![img_3.png](img_3.png)
+![img_3.png](README-image/img_3.png)
 
-![img_4.png](img_4.png)
+![img_4.png](README-image/img_4.png)
 
-![img_5.png](img_5.png)
+![img_5.png](README-image/img_5.png)
 
-![img_7.png](img_7.png)
+![img_7.png](README-image/img_7.png)
 
 ### Day 24-04-06
 
 1. 게시글 작성 시 타임 포맷 변경 ( Date -> String ) changeTimeFormatNow 추가
 
-![img_8.png](img_8.png)
+![img_8.png](README-image/img_8.png)
 
 ### Day 24-04-07
 
 1. api로 받아온 데이터의 페이징 처리 추가
 2. 페이징 처리로 인한 주소값들 수정
-![img_9.png](img_9.png)
+![img_9.png](README-image/img_9.png)
 
 ### Day 24-04-09
 1. Board 게시글 작성자 표시 안되는 오류 수정
 2. Board 게시글 삭제 시 redirectAttribute 추가
+
+### Day 24-04-11
+1. Role 관련한 문제 수정 중 
+2. 게시글 상세 조회 페이지 작성 중 
+![img_10.png](README-image/img_10.png)

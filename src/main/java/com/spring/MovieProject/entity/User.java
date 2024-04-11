@@ -34,7 +34,7 @@ public class User {
     private boolean enabled;
 
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private List<Role> role = new ArrayList<>();
 
 
@@ -118,5 +118,9 @@ public class User {
 
     public void setRole(List<Role> role) {
         this.role = role;
+    }
+
+    public void addRoles(Role role) {
+        this.role.add(role);
     }
 }

@@ -32,6 +32,13 @@ public class UserController {
         return "redirect:/v1/popular/1";
     }
 
+    @GetMapping("/v1/signUser")
+    public String signUp(Model model, User user) {
+
+        model.addAttribute("User", user);
+        return "SignUp/signup";
+    }
+
 
     @GetMapping("/v1/userList")
     public String getUserList(Model model, User user) {
