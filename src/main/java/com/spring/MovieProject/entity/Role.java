@@ -15,20 +15,15 @@ public class Role {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @Column(length = 250,nullable = false)
-    private String explanation;
-
-
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private User user;
 
     public Role() {
     }
 
-    public Role(Integer id, String name, String explanation) {
+    public Role(Integer id, String name ) {
         this.id = id;
         this.name = name;
-        this.explanation = explanation;
     }
 
     public void setId(Integer id) {
@@ -47,12 +42,13 @@ public class Role {
         this.name = name;
     }
 
-    public String getExplanation() {
-        return explanation;
+
+    public User getUser() {
+        return user;
     }
 
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -60,7 +56,6 @@ public class Role {
         return "Role{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", explanation='" + explanation + '\'' +
                 '}';
     }
 }

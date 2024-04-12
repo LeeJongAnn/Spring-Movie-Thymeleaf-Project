@@ -49,13 +49,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
-
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .anyRequest().permitAll()
                 ).formLogin((login) -> login.loginPage("/login")
                         .usernameParameter("email")
                         .defaultSuccessUrl("/v1/popular/1"))
+
                 .logout(logout -> logout.logoutUrl("/v1/logout").logoutSuccessUrl("/v1/popular/1"));
 
         http.authenticationProvider(authenticationProvider());

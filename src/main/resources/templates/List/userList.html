@@ -63,7 +63,8 @@
     let content = "해당하는 사용자를 삭제하시겠습니까?";
         document.addEventListener("DOMContentLoaded", function () {
             const collection = document.getElementById("delete-modal");
-            collection.addEventListener('click', function () {
+            collection.addEventListener('click', function (e) {
+                e.preventDefault();
                 textChange(title, content);
             })
         });

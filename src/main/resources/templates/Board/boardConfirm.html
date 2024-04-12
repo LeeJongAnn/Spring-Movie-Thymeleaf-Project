@@ -12,20 +12,16 @@
 
 <div class="container mt-5">
 
-        <h5 class="my-3 border-bottom pb-2">게시글 등록</h5>
+        <h5 class="my-3 border-bottom pb-2">[[${post.title}]]</h5>
             <div class="mb-3">
-                <label for="subject" class="form-label">제목</label>
-                <div></div>
-            </div>
-            <div class="mb-3">
-                <label for="content" class="form-label">내용</label>
+                <div>[[${post.content}]]</div>
             </div>
 </div>
 
 <div class="container mt-5">
 
     <div class="card-footer">
-        <form onsubmit="addComment(event)">
+        <form>
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="댓글을 입력하세요" required>
             </div>

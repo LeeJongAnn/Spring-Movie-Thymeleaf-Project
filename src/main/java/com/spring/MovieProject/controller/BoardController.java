@@ -72,10 +72,10 @@ public class BoardController {
 
 
     @GetMapping("/v1/get-board/{id}")
-    public String boardGetDetail(@PathVariable("id") Integer id) {
+    public String boardGetDetail(@PathVariable("id") Integer id,Model model) {
 
         Board board = boardService.getBoard(id);
-
+        model.addAttribute("post", board);
         return "Board/boardConfirm";
     }
 }
