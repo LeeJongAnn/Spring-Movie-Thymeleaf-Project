@@ -15,7 +15,7 @@ public class Role {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private User user;
 
     public Role() {

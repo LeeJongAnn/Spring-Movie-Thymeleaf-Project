@@ -19,17 +19,17 @@
             <div class="text-center">회 원 가 입</div>
             <div class="mb-3">
                 <label for="UsernameInput" class="form-label">사용자명</label>
-                <input type="text" class="form-control" th:field="*{username}" aria-describedby="emailHelp">
+                <input type="text" class="form-control" th:field="*{username}" aria-describedby="emailHelp" required>
             </div>
 
             <div class="mb-3">
                 <label for="email" class="form-label">이메일</label>
-                <input type="email" class="form-control" th:field="*{email}" aria-describedby="emailHelp">
+                <input type="email" class="form-control" th:field="*{email}" aria-describedby="emailHelp" required>
                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-                <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassword1">
+                <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassword1" required>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">

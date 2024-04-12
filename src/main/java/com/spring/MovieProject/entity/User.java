@@ -33,10 +33,8 @@ public class User {
 
     private boolean enabled;
 
-
-    @OneToMany(mappedBy = "user")
-    private List<Role> role = new ArrayList<>();
-
+    @OneToOne
+    private Role role;
 
     public User() {
     }
@@ -112,15 +110,11 @@ public class User {
         return this.username;
     }
 
-    public List<Role> getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(List<Role> role) {
+    public void setRole(Role role) {
         this.role = role;
-    }
-
-    public void addRoles(Role role) {
-        this.role.add(role);
     }
 }
