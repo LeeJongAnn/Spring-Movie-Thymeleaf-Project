@@ -9,8 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 @NoArgsConstructor
-@Getter
-@Setter
 public class Reply {
 
     @Id
@@ -41,5 +39,45 @@ public class Reply {
         return "Reply{" +
                 "contents='" + comments + '\'' +
                 '}';
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(String creationTime) {
+        this.creationTime = creationTime;
     }
 }
