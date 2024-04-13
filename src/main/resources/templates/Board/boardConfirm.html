@@ -8,32 +8,64 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
-
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <div class="container mt-5">
 
-        <h5 class="my-3 border-bottom pb-2">[[${post.title}]]</h5>
-            <div class="mb-3">
-                <div>[[${post.content}]]</div>
-            </div>
+    <h5 class="my-3 border-bottom pb-2">[[${board.title}]]</h5>
+    <div class="mb-3">
+        <div>[[${board.content}]]</div>
+    </div>
 </div>
 
 <div class="container mt-5">
 
-    <div class="card-footer">
-        <form>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="댓글을 입력하세요" required>
-            </div>
-            <button type="submit" class="btn btn-primary">작성</button>
-        </form>
-        <div class="comments mt-3">
-        </div>
+
+    <div class="card" style="margin: 0 auto; width:900px; ">
+        <div class="card-header">댓글 리스트</div>
+        <ul id="comment--box" class="list-group">
+            <th:block th:each="reply : ${replyList}">
+                <li th:upReplyId="'reply-' + ${reply.id}" class="list-group-item d-flex justify-content-between">
+                    <div class="d-flex">
+                        <th:block th:if="${reply.creationTime}">
+                        </th:block>
+
+                        <div>[[${reply.comments}]]</div>
+                        <div style="text-align: right"> - [[${reply.user.username}]]</div>
+                        <div >- 작성날짜 : [[${reply.creationTime}]]</div>
+                        &nbsp
+<!--                        <th:block th:if="${#authentication.principal.user.id} == ${reply.user.id}">-->
+                                                        <input type="hidden" th:replyId="${reply.id}">
+<!--                            <button type="button" th:onclick="replyDelete([[${board.id}]],[[${reply.id}]])"-->
+<!--                                    class="btn btn-danger btn-delete-reply" value="삭제">삭제-->
+<!--                            </button>-->
+<!--                        </th:block>-->
+                    </div>
+                </li>
+            </th:block>
+            <form th:action="@{'/create-reply/' + ${boardId} + '/reply'}" method="post" th:object="${reply}">
+
+                <div class="text-center m-2">
+                    하단에 댓글을 입력하세요
+                </div>
+                <div>
+                    <input type="text" th:field="*{comments}" class="form-control m-3" id="reply-content" style="display: flex; align-items: center;">
+
+                </div>
+                        <input type="hidden" th:value="${board.id}" id="boardId">
+
+                <button type="submit" class="btn btn-primary m-3" value="저장">저장</button>
+                <button type="button" id="backButton" class="btn btn-danger m-3" value="저장">뒤로가기</button>
+            </form>
+        </ul>
     </div>
 </div>
 
 <script>
-
+    $(document).ready(function() {
+        $("#backButton").on("click", function () {
+            window.history.back();
+        })
+    });
 
 </script>
 </body>

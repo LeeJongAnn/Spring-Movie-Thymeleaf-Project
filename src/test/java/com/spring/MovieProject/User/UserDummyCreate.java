@@ -55,7 +55,6 @@ public class UserDummyCreate {
         user.setPassword("1234");
         Role ADMIN = em.find(Role.class, 1);
 
-        user.addRoles(ADMIN);
 
         userRepository.save(user);
     }

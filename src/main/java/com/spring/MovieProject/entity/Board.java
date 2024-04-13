@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Board {
@@ -31,8 +32,18 @@ public class Board {
     @JoinColumn(name = "userId")
     private User user;
 
-
+    @OneToMany(mappedBy = "board" ,cascade = CascadeType.REMOVE)
+    private List<Reply> replyList;
     private String creationTime;
+
+
+    public List<Reply> getReplyList() {
+        return replyList;
+    }
+
+    public void setReplyList(List<Reply> replyList) {
+        this.replyList = replyList;
+    }
 
     public Board() {
     }

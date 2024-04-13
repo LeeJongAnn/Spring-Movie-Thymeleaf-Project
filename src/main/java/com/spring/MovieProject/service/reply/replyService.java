@@ -12,15 +12,11 @@ import java.util.List;
 public interface replyService {
 
 
-    public Reply replyCreate(Reply reply, @AuthenticationPrincipal DetailsUser user);
+    List<Reply> replyList();
 
-    public List<Reply> getReplyList();
+    Reply saveReply(Reply reply,int boardId,@AuthenticationPrincipal DetailsUser user);
 
-    public Reply updateReply();
-
-    public void deleteReply(Integer id);
-
-    public Reply getReply(Integer id);
+    void deleteReply(Integer replyId);
 
 
 }

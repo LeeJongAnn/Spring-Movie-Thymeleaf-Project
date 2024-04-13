@@ -3,6 +3,7 @@ package com.spring.MovieProject.controller;
 
 import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
+import com.spring.MovieProject.entity.Reply;
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.exception.BoardNotFoundException;
 import com.spring.MovieProject.exception.CustomException;
@@ -71,11 +72,14 @@ public class BoardController {
     }
 
 
-    @GetMapping("/v1/get-board/{id}")
-    public String boardGetDetail(@PathVariable("id") Integer id,Model model) {
-
+    @GetMapping("/v1/get-board/{boardId}")
+    public String boardDetails(@PathVariable(name = "boardId") Integer id, Model model, Reply reply) {
         Board board = boardService.getBoard(id);
-        model.addAttribute("post", board);
+        List<Reply> replyList = board.getReplyList();
+        model.addAttribute("board", board);
+        model.addAttribute("id", board.getId());
+        model.addAttribute("reply", reply);
+        model.addAttribute("replyList", replyList);
         return "Board/boardConfirm";
     }
 }
