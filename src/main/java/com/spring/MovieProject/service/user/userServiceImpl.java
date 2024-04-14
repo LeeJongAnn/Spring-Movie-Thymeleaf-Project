@@ -5,6 +5,7 @@ import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.exception.CustomException;
 import com.spring.MovieProject.exception.SignUpIsDuplicatedException;
 import com.spring.MovieProject.exception.UserNotFoundException;
+import com.spring.MovieProject.repository.RoleRepository;
 import com.spring.MovieProject.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,6 +20,7 @@ public class userServiceImpl implements userService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
 
     public userServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;

@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@NoArgsConstructor
 public class Reply {
 
     @Id
@@ -32,6 +31,10 @@ public class Reply {
         this.comments = comments;
         this.board = board;
         this.user = user;
+    }
+
+
+    public Reply() {
     }
 
     @Override

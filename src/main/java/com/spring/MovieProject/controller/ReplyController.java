@@ -7,6 +7,7 @@ import com.spring.MovieProject.exception.ReplyErrorException;
 import com.spring.MovieProject.repository.UserRepository;
 import com.spring.MovieProject.service.reply.replyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ public class ReplyController {
     @Autowired
     private replyServiceImpl replyService;
 
-    @PostMapping("/create-reply/{boardId}/reply")
+    @PostMapping("/v1/create-reply/{boardId}/reply")
     public String createReply(Reply reply, @PathVariable(name = "boardId") Integer boardId, @AuthenticationPrincipal DetailsUser user, Model model) {
         try {
             replyService.saveReply(reply, boardId, user);
@@ -31,4 +32,12 @@ public class ReplyController {
             throw new ReplyErrorException();
         }
     }
+
+    @GetMapping("/v1/delete-reply/{boardId}/{id}")
+    public String replyDelete2(@PathVariable(name = "id") Integer id,@PathVariable(name = "boardId") Integer boardId) {
+
+        replyService.deleteReply(id);
+        return "redirect:/v1/get-board/" + boardId;
+    }
+
 }

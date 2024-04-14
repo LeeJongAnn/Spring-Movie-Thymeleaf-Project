@@ -1,7 +1,9 @@
 package com.spring.MovieProject.controller;
 
+import com.spring.MovieProject.entity.Role;
 import com.spring.MovieProject.entity.User;
 import com.spring.MovieProject.exception.UserNotFoundException;
+import com.spring.MovieProject.service.role.roleServiceImpl;
 import com.spring.MovieProject.service.user.userServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,14 +20,16 @@ import java.util.List;
 public class UserController {
 
 
+    private roleServiceImpl roleService;
     private userServiceImpl userService;
 
-    public UserController(userServiceImpl userService) {
+    public UserController(roleServiceImpl roleService, userServiceImpl userService) {
+        this.roleService = roleService;
         this.userService = userService;
     }
 
     @PostMapping("/v1/signUp")
-    public String signUpUser(User user) {
+    public String signUpUser(User user,Role role) {
 
         userService.signUp(user);
         System.out.println(user);
@@ -34,8 +38,9 @@ public class UserController {
 
     @GetMapping("/v1/signUser")
     public String signUp(Model model, User user) {
-
+        List<Role> roles = roleService.roleList();
         model.addAttribute("User", user);
+        model.addAttribute("Role", roles);
         return "SignUp/signup";
     }
 

@@ -52,7 +52,8 @@ public class User {
         this.enabled = enabled;
     }
 
-
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL , orphanRemoval = true)
+    private List<Reply> replyList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL , orphanRemoval = true)
     private List<Board> board = new ArrayList<>();
@@ -116,5 +117,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public List<Reply> getReplyList() {
+        return replyList;
+    }
+
+    public void setReplyList(List<Reply> replyList) {
+        this.replyList = replyList;
     }
 }

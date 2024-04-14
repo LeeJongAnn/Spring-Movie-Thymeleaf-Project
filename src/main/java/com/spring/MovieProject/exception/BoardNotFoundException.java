@@ -2,7 +2,7 @@ package com.spring.MovieProject.exception;
 
 public class BoardNotFoundException extends CustomException {
 
-
+    private final String MESSAGE = "Board not found";
     public BoardNotFoundException() {
         super();
     }

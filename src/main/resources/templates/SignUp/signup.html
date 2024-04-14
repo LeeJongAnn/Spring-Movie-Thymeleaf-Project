@@ -31,16 +31,19 @@
                 <label for="exampleInputPassword1" class="form-label">비밀번호</label>
                 <input type="password" class="form-control" th:field="*{password}" id="exampleInputPassword1" required>
             </div>
-            <div class="mb-3 form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="mb-3 form-check">                <div> - 두 곳 중 한 곳에 체크 해주세요</div>
+                <th:block th:each="roles :${Role}">
+                    <input type="radio" class="form-check-input" id="exampleCheck1" th:value="${roles.id}" th:field="*{role}" required>[[${roles.name}]] <br>
+                </th:block>
+
             </div>
             <div class="text-center">
-                <button type="submit" value="저장" id="save-user" class="btn btn-primary">저장</button>
+                <button type="submit" value="저장" id="save-user" class="btn btn-primary" style="width: 200px;">저장</button>
             </div>
         </div>
     </form>
     <div class="array" style="position:relative; left: 375px; bottom: 38px;">
+
     </div>
 </div>
 

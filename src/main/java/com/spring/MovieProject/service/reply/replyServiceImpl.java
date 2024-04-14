@@ -4,6 +4,7 @@ package com.spring.MovieProject.service.reply;
 import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
 import com.spring.MovieProject.entity.Reply;
+import com.spring.MovieProject.exception.ReplyErrorException;
 import com.spring.MovieProject.repository.BoardRepository;
 import com.spring.MovieProject.repository.ReplyRepository;
 import com.spring.MovieProject.repository.UserRepository;
@@ -52,6 +53,10 @@ public class replyServiceImpl implements replyService {
 
     @Override
     public void deleteReply(Integer replyId) {
+        Reply reply = replyRepository.findById(replyId).orElseThrow(() -> new ReplyErrorException());
+        if (reply != null) {
+            replyRepository.deleteById(replyId);
+        }
 
     }
 

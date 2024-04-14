@@ -31,41 +31,93 @@
 
                         <div>[[${reply.comments}]]</div>
                         <div style="text-align: right"> - [[${reply.user.username}]]</div>
-                        <div >- 작성날짜 : [[${reply.creationTime}]]</div>
+                        &nbsp&nbsp
+                        <div> - 작성날짜 : [[${reply.creationTime}]]</div>
                         &nbsp
-<!--                        <th:block th:if="${#authentication.principal.user.id} == ${reply.user.id}">-->
-                                                        <input type="hidden" th:replyId="${reply.id}">
-<!--                            <button type="button" th:onclick="replyDelete([[${board.id}]],[[${reply.id}]])"-->
-<!--                                    class="btn btn-danger btn-delete-reply" value="삭제">삭제-->
-<!--                            </button>-->
-<!--                        </th:block>-->
+
+                        <!--                        <th:block th:if="${#authentication.principal} == ${reply.getUser()}">-->
+                        <input type="hidden" th:replyId="${reply.id}">
+                        <input type="hidden" th:boardId="${board.getId()}">
+                        <div>
+                            <button id="delete-button" class="btn btn-danger" style="width: 200px;"
+                                    th:href="@{'/v1/delete-reply/'+${boardId}+ '/' + ${reply.id}}"> 삭제
+                            </button>
+                        </div>
+                        <!--                        </th:block>-->
                     </div>
                 </li>
             </th:block>
-            <form th:action="@{'/create-reply/' + ${boardId} + '/reply'}" method="post" th:object="${reply}">
+            <form th:action="@{'/v1/create-reply/' + ${boardId} + '/reply'}" method="post" th:object="${reply}">
 
                 <div class="text-center m-2">
                     하단에 댓글을 입력하세요
                 </div>
                 <div>
-                    <input type="text" th:field="*{comments}" class="form-control m-3" id="reply-content" style="display: flex; align-items: center;">
+                    <input type="text" th:field="*{comments}" class="form-control m-3" id="reply-content"
+                           style="display: flex; align-items: center;">
 
                 </div>
-                        <input type="hidden" th:value="${board.id}" id="boardId">
+                <input type="hidden" th:value="${board.id}" id="boardId">
 
-                <button type="submit" class="btn btn-primary m-3" value="저장">저장</button>
-                <button type="button" id="backButton" class="btn btn-danger m-3" value="저장">뒤로가기</button>
+                <button type="submit" class="btn btn-primary m-3" value="저장" style="width: 200px;">저장</button>
+                <button type="button" id="backButton" class="btn btn-danger m-3" style="align-items: flex-end; width: 200px;" value="저장" >뒤로가기
+                </button>
             </form>
         </ul>
     </div>
 </div>
+<div class="modal" tabindex="-1" id="myModalShow">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="show-modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="show-modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                <a href="" class="btn btn-primary" id="delete-ok">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
 
-<script>
-    $(document).ready(function() {
-        $("#backButton").on("click", function () {
-            window.history.back();
-        })
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const collection = document.querySelectorAll("#delete-button");
+        collection.forEach(value => {
+            value.addEventListener("click", function (e) {
+                console.log(value);
+                document.getElementById("show-modal-title").innerHTML = "경고!";
+                document.getElementById("show-modal-body").innerHTML = "해당하는 댓글을 삭제하시겠습니까?";
+                var myModal = new bootstrap.Modal(document.getElementById('myModalShow'));
+                const attribute = value.getAttribute("href");
+                console.log(attribute);
+                myModal.show();
+                const href = document.getElementById("delete-ok").setAttribute("href", attribute);
+                console.log(href);
+            });
+        });
+
+        document.getElementById("backButton").addEventListener("click", function () {
+            window.location.href = "http://localhost:8080/v1/board"
+        });
     });
+
+
+    function replyDelete(replyId) {
+
+        url = "[[@{/v1/delete-reply}]]";
+        userReplyId = replyId;
+        requestParam = {id: userReplyId};
+        $.get(url + '/' + userReplyId, function (response) {
+            alert("해당하는 댓글이 삭제되었습니다: " + userReplyId);
+            location.reload();
+        }).done();
+    }
+
 
 </script>
 </body>

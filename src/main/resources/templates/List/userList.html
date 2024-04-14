@@ -17,6 +17,7 @@
         <th scope="col">사용자명</th>
         <th scope="col">이메일</th>
         <th scope="col">활성화</th>
+        <th scope="col">권한</th>
         <th scope="col">계정 편집</th>
     </tr>
     </thead>
@@ -29,10 +30,10 @@
             <a th:if="${everyUser.enabled == true}"><i class="bi bi-check-lg h3"></i></a>
 
         </td>
+        <td>[[${everyUser.role}]]</td>
         <td><i class="bi bi-pencil-square h3"></i>&nbsp; &nbsp;
             <a id="delete-modal" th:href="@{'/v1/deleteUser/' + ${everyUser.id}}"> <i
                     class="bi bi-trash-fill h3"></i></a></td>
-
     </tr>
 
     </tbody>
@@ -40,7 +41,7 @@
 </table>
 
 <div class="modal" tabindex="-1" id="myModalShow">
-    <div class="modal-dialog" >
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="show-modal-title"></h5>
@@ -61,22 +62,29 @@
 <script type="text/javascript">
     let title = "사용자 삭제";
     let content = "해당하는 사용자를 삭제하시겠습니까?";
-        document.addEventListener("DOMContentLoaded", function () {
-            const collection = document.getElementById("delete-modal");
-            collection.addEventListener('click', function (e) {
+    document.addEventListener("DOMContentLoaded", function () {
+        const collection = document.querySelectorAll("#delete-modal");
+        collection.forEach(value => {
+            value.addEventListener("click", function (e) {
                 e.preventDefault();
-                const deleteLink = document.getElementById("delete-modal").getAttribute("href");
-                document.getElementById("delete-ok").setAttribute("href", deleteLink);
-                textChange(title, content);
-            })
+                console.log(value);
+                document.getElementById("show-modal-title").innerHTML = title;
+                document.getElementById("show-modal-body").innerHTML = content;
+                var myModal = new bootstrap.Modal(document.getElementById('myModalShow'));
+                const attribute = value.getAttribute("href");
+                console.log(attribute);
+                myModal.show();
+                const href = document.getElementById("delete-ok").setAttribute("href", attribute);
+                console.log(href);
+            });
         });
 
-        function textChange(title, content) {
-            document.getElementById("show-modal-title").innerHTML = title;
-            document.getElementById("show-modal-body").innerHTML = content;
-            var myModal = new bootstrap.Modal(document.getElementById('myModalShow'));
-            myModal.show();
-    }
+        document.getElementById("backButton").addEventListener("click", function () {
+            window.location.href = "Board/boardList";
+        });
+    });
+
+
 </script>
 </body>
 
