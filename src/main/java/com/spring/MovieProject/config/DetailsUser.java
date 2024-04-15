@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
+
+@Getter
 public class DetailsUser implements UserDetails {
 
     private User user;
