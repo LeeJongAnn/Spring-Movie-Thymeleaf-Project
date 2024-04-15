@@ -3,6 +3,7 @@ package com.spring.MovieProject.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,8 +16,8 @@ public class Role {
     @Column(length = 50, nullable = false)
     private String name;
 
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private User user;
+    @ManyToMany
+    private List<User> user = new ArrayList<>();
 
     public Role() {
     }
@@ -42,12 +43,11 @@ public class Role {
         this.name = name;
     }
 
-
-    public User getUser() {
+    public List<User> getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(List<User> user) {
         this.user = user;
     }
 

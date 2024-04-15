@@ -1,11 +1,13 @@
 package com.spring.MovieProject.config;
 
+import com.spring.MovieProject.entity.Role;
 import com.spring.MovieProject.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +23,13 @@ public class DetailsUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        List<Role> role = user.getRole();
+        for (Role roles : role) {
+            authorities.add(new SimpleGrantedAuthority(roles.getName()));
+        }
+        return authorities;
     }
 
     @Override

@@ -33,8 +33,8 @@ public class User {
 
     private boolean enabled;
 
-    @OneToOne
-    private Role role;
+    @ManyToMany
+    private List<Role> role = new ArrayList<>();
 
     public User() {
     }
@@ -111,11 +111,11 @@ public class User {
         return this.username;
     }
 
-    public Role getRole() {
+    public List<Role> getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(List<Role> role) {
         this.role = role;
     }
 
