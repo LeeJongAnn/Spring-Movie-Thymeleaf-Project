@@ -2,7 +2,7 @@ package com.spring.MovieProject.service.board;
 
 import com.spring.MovieProject.config.DetailsUser;
 import com.spring.MovieProject.entity.Board;
-import com.spring.MovieProject.entity.User;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
@@ -18,6 +18,8 @@ public interface boardService {
     public void deleteBoard(Integer id);
 
     public Board getBoard(Integer id);
+
+    public Page<Board> pageBoard(int pageNum);
 
 
 

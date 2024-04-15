@@ -9,7 +9,12 @@ import com.spring.MovieProject.exception.CustomException;
 import com.spring.MovieProject.exception.UserNotFoundException;
 import com.spring.MovieProject.repository.BoardRepository;
 import jakarta.transaction.Transactional;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -17,6 +22,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -62,6 +68,19 @@ public class BoardServiceImpl implements boardService {
         return board;
     }
 
+
+    @Override
+    public Page<Board> pageBoard(int pageNum) {
+
+        Pageable pageable = PageRequest.of(pageNum - 1, 5);
+        Page<Board> boardPage = boardRepository.findAll(pageable);
+        List<Board> boardList = boardPage.stream().collect(Collectors.toList());
+        Page<Board> board = new PageImpl<>(boardList, pageable, boardPage.getTotalElements());
+
+        return board;
+    }
+
+
     /*
      * author: LeeJongAnn
      * description: Changes the class of LocalDateTime at the current time to the pattern of the cutomizer.
@@ -75,4 +94,7 @@ public class BoardServiceImpl implements boardService {
 
         return format;
     }
+
+
+
 }
