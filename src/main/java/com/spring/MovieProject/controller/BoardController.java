@@ -98,6 +98,7 @@ public class BoardController {
         model.addAttribute("board", content);
         model.addAttribute("totalPages", boards.getTotalPages());
         model.addAttribute("user", user);
+        model.addAttribute("pageNum", pageNum);
         return "Board/boardList";
 
     }
