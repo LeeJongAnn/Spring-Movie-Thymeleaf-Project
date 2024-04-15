@@ -35,7 +35,7 @@
                                     -->
 
                 <li sec:authorize="isAuthenticated()" class="nav-item">
-                    <a class="nav-link" th:href="@{'/v1/board-page/' + ${pageNum}}">게시판</a>
+                    <a class="nav-link" th:href="@{'/v1/board-page/1'}">게시판</a>
                 </li>
                 <li sec:authorize="isAnonymous()" class="nav-item">
                     <a class="nav-link" th:href="@{/v1/signUser}">회원가입</a>

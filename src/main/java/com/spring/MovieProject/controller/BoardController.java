@@ -29,15 +29,15 @@ public class BoardController {
      * 게시글과 관련된 컨트롤러로 해당하는 주소로 게시글들이 작성되어 있는 페이지로 이동합니다.
      * */
 
-//    @Deprecated(forRemoval = true)
-//    @GetMapping("/v1/board-page/1")
-//    String boardList(Model model, @AuthenticationPrincipal User user) {
-//
-//        List<Board> boardList = boardService.getBoardList();
-//        model.addAttribute("board", boardList);
-//        model.addAttribute("user", user);
-//        return "Board/boardList";
-//    }
+    @Deprecated(forRemoval = true)
+    @GetMapping("/v1/board")
+    String boardList(Model model, @AuthenticationPrincipal User user) {
+
+        List<Board> boardList = boardService.getBoardList();
+        model.addAttribute("board", boardList);
+        model.addAttribute("user", user);
+        return "Board/boardList";
+    }
 
     /*
      * 24-04-05
@@ -91,7 +91,7 @@ public class BoardController {
 
 
     @GetMapping("/v1/board-page/{pageNum}")
-    public String pageBoard(@PathVariable("pageNum") int pageNum, Model model,@AuthenticationPrincipal DetailsUser user) {
+    public String pageBoard(@PathVariable("pageNum") int pageNum, Model model,@AuthenticationPrincipal User user) {
 
         Page<Board> boards = boardService.pageBoard(pageNum);
         List<Board> content = boards.getContent();

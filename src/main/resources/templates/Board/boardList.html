@@ -28,10 +28,10 @@
         <td>[[${post.user}]]</td>
         <td>[[${post.creationTime}]]</td>
         <td>
-            <a th:if="${#authentication.principal.user.id} == ${post.user.id}" th:href="@{'/v1/boardForm/'+ ${post.id}}"><i class="bi bi-pencil-square h3"></i></a>
+            <a th:href="@{'/v1/boardForm/'+ ${post.id}}"><i class="bi bi-pencil-square h3"></i></a>
             &nbsp; &nbsp;
-            <a th:if="${#authentication.principal.user.id} == ${post.user.id}" th:href="@{'/v1/delete-board/' + ${post.id}}" id="delete-modal" > <i class="bi bi-trash-fill h3"></i></a>
-
+            <a th:href="@{'/v1/delete-board/' + ${post.id}}" id="delete-modal" > <i class="bi bi-trash-fill h3"></i></a>
+<!--            th:if="${#authentication.principal.user.id} == ${post.user.id}"-->
         </td>
 
     </tr>
