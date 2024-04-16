@@ -12,6 +12,8 @@
 <div class="container mt-5">
 
     <h5 class="my-3 border-bottom pb-2">[[${board.title}]]</h5>
+    <div align="right">작성자 - [[${board.user}]]</div>
+    <div align="right">작성 시간  - [[${board.creationTime}]]</div>
     <div class="mb-3">
         <div>[[${board.content}]]</div>
     </div>
@@ -54,14 +56,13 @@
                 </div>
                 <div>
                     <input type="text" th:field="*{comments}" class="form-control m-3" id="reply-content"
-                           style="display: flex; align-items: center;">
+                           style="display: flex; align-items: center;" required>
 
                 </div>
                 <input type="hidden" th:value="${board.id}" id="boardId">
 
                 <button type="submit" class="btn btn-primary m-3" value="저장" style="width: 200px;">저장</button>
-                <button type="button" id="backButton" class="btn btn-danger m-3" style="align-items: flex-end; width: 200px;" value="저장" >뒤로가기
-                </button>
+
             </form>
         </ul>
     </div>
@@ -101,9 +102,6 @@
             });
         });
 
-        document.getElementById("backButton").addEventListener("click", function () {
-            window.location.href = "http://localhost:8080/v1/board"
-        });
     });
 
 

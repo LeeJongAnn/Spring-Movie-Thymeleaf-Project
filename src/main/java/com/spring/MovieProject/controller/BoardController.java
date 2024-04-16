@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -29,15 +30,15 @@ public class BoardController {
      * 게시글과 관련된 컨트롤러로 해당하는 주소로 게시글들이 작성되어 있는 페이지로 이동합니다.
      * */
 
-    @Deprecated(forRemoval = true)
-    @GetMapping("/v1/board")
-    String boardList(Model model, @AuthenticationPrincipal User user) {
-
-        List<Board> boardList = boardService.getBoardList();
-        model.addAttribute("board", boardList);
-        model.addAttribute("user", user);
-        return "Board/boardList";
-    }
+//    @Deprecated(forRemoval = true)
+//    @GetMapping("/v1/board")
+//    String boardList(Model model, @AuthenticationPrincipal User user) {
+//
+//        List<Board> boardList = boardService.getBoardList();
+//        model.addAttribute("board", boardList);
+//        model.addAttribute("user", user);
+//        return "Board/boardList";
+//    }
 
     /*
      * 24-04-05
@@ -90,8 +91,21 @@ public class BoardController {
     }
 
 
-    @GetMapping("/v1/board-page/{pageNum}")
+    @GetMapping("/v1/board/{pageNum}")
     public String pageBoard(@PathVariable("pageNum") int pageNum, Model model,@AuthenticationPrincipal User user) {
+
+        Page<Board> boards = boardService.pageBoard(pageNum);
+        List<Board> content = boards.getContent();
+        model.addAttribute("board", content);
+        model.addAttribute("totalPages", boards.getTotalPages());
+        model.addAttribute("user", user);
+        model.addAttribute("pageNum", pageNum);
+        return "Board/boardList";
+
+    }
+
+    @GetMapping("/v1/board-page/{pageNum}")
+    public String pageSortBoard(@PathVariable("pageNum") int pageNum,  Model model, @AuthenticationPrincipal User user) {
 
         Page<Board> boards = boardService.pageBoard(pageNum);
         List<Board> content = boards.getContent();
