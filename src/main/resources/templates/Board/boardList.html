@@ -13,7 +13,14 @@
     <thead>
     <tr>
         <th scope="col">번호</th>
-        <th scope="col">제목</th>
+        <th scope="col"><a th:if="${field == 'title'}"
+                           th:href="@{'/v1/board-page/' + ${pageNum} + '?field='+ ${field} + '&direction=' + ${direction}}" style="text-decoration-line: none">제목<span
+                th:if="${field == 'title'}"
+                th:class="${direction == 'up' ? 'bi bi-arrow-up-circle-fill' : 'bi bi-arrow-down-circle-fill'}"></span></a>
+
+
+
+        </th>
         <th scope="col">내용</th>
         <th scope="col">작성자</th>
         <th scope="col">작성일 및 시간</th>
@@ -30,8 +37,8 @@
         <td>
             <a th:href="@{'/v1/boardForm/'+ ${post.id}}"><i class="bi bi-pencil-square h3"></i></a>
             &nbsp; &nbsp;
-            <a th:href="@{'/v1/delete-board/' + ${post.id}}" id="delete-modal" > <i class="bi bi-trash-fill h3"></i></a>
-<!--            th:if="${#authentication.principal.user.id} == ${post.user.id}"-->
+            <a th:href="@{'/v1/delete-board/' + ${post.id}}" id="delete-modal"> <i class="bi bi-trash-fill h3"></i></a>
+            <!--            th:if="${#authentication.principal.user.id} == ${post.user.id}"-->
         </td>
 
     </tr>
@@ -42,7 +49,9 @@
 </table>
 
 <div>
-    <a th:href="@{/v1/boardForm}"><button type="button" class="btn btn-primary">게시글 작성하기</button></a>
+    <a th:href="@{/v1/boardForm}">
+        <button type="button" class="btn btn-primary">게시글 작성하기</button>
+    </a>
 </div>
 
 <div class="modal" tabindex="-1" id="myModalShow">
@@ -66,15 +75,15 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li th:class="${1 != pageNum ? 'page-item active' : 'page-item disabled'}"><a class="page-link"
-                                                                                             th:href="@{'/v1/board-page/' + ${pageNum-1}}">이전
+                                                                                          th:href="@{'/v1/board-page/' + ${pageNum - 1} + '?field=' + ${field} + '&direction=' + ${direction}}">이전
                 페이지</a></li>
             <li th:class="${CountBy==pageNum} ? 'page-item active' : 'page-item'"
                 th:each="CountBy : ${#numbers.sequence(1,totalPages)}">
                 <a class="page-link"
-                   th:href="@{'/v1/board-page/' + ${CountBy} + '?value=' + ${value} + '&direction=' + ${direction}}">[[${CountBy}]]</a>
+                   th:href="@{'/v1/board-page/' + ${CountBy} + '?field=' + ${field} + '&direction=' + ${direction}}">[[${CountBy}]]</a>
             </li>
             <li th:class="${totalPages == pageNum ? 'page-item disabled' : 'page-item active'}"><a class="page-link"
-                                                                                                      th:href="@{'/v1/board-page/' + ${pageNum+1}}">다음
+                                                                                                   th:href="@{'/v1/board-page/' + ${pageNum+1}+ '?field=' + ${field} + '&direction=' + ${direction}}">다음
                 페이지</a></li>
         </ul>
     </nav>

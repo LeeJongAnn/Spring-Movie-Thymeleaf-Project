@@ -11,10 +11,7 @@ import com.spring.MovieProject.repository.BoardRepository;
 import jakarta.transaction.Transactional;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -70,9 +67,12 @@ public class BoardServiceImpl implements boardService {
 
 
     @Override
-    public Page<Board> pageBoard(int pageNum) {
+    public Page<Board> pageBoard(int pageNum, String field, String direction) {
 
-        Pageable pageable = PageRequest.of(pageNum - 1, 5);
+        Sort sort = Sort.by(field);
+        Sort Direction = sort.equals("asc") ? sort.ascending() : sort.descending();
+        Pageable pageable = PageRequest.of(pageNum - 1, 5, Direction);
+
         Page<Board> boardPage = boardRepository.findAll(pageable);
         List<Board> boardList = boardPage.stream().collect(Collectors.toList());
         Page<Board> board = new PageImpl<>(boardList, pageable, boardPage.getTotalElements());

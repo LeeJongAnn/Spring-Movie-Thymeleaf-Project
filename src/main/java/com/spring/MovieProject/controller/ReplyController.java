@@ -34,7 +34,7 @@ public class ReplyController {
     }
 
     @GetMapping("/v1/delete-reply/{boardId}/{id}")
-    public String replyDelete2(@PathVariable(name = "id") Integer id,@PathVariable(name = "boardId") Integer boardId) {
+    public String replyDelete(@PathVariable(name = "id") Integer id,@PathVariable(name = "boardId") Integer boardId) {
 
         replyService.deleteReply(id);
         return "redirect:/v1/get-board/" + boardId;

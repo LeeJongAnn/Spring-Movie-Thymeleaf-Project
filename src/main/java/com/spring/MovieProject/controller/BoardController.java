@@ -94,7 +94,7 @@ public class BoardController {
     @GetMapping("/v1/board/{pageNum}")
     public String pageBoard(@PathVariable("pageNum") int pageNum, Model model,@AuthenticationPrincipal User user) {
 
-        Page<Board> boards = boardService.pageBoard(pageNum);
+        Page<Board> boards = boardService.pageBoard(1,"title","up");
         List<Board> content = boards.getContent();
         model.addAttribute("board", content);
         model.addAttribute("totalPages", boards.getTotalPages());
@@ -105,14 +105,19 @@ public class BoardController {
     }
 
     @GetMapping("/v1/board-page/{pageNum}")
-    public String pageSortBoard(@PathVariable("pageNum") int pageNum,  Model model, @AuthenticationPrincipal User user) {
+    public String pageSortBoard(@PathVariable("pageNum") int pageNum,@RequestParam("field") String field , @RequestParam("direction") String direction, Model model, @AuthenticationPrincipal User user) {
 
-        Page<Board> boards = boardService.pageBoard(pageNum);
+        Page<Board> boards = boardService.pageBoard(pageNum,field,direction);
         List<Board> content = boards.getContent();
+        String down = direction.equals("up") ? "down" : "up";
+
         model.addAttribute("board", content);
         model.addAttribute("totalPages", boards.getTotalPages());
         model.addAttribute("user", user);
         model.addAttribute("pageNum", pageNum);
+        model.addAttribute("field", field);
+        model.addAttribute("direction", direction);
+        model.addAttribute("down", down);
         return "Board/boardList";
 
     }

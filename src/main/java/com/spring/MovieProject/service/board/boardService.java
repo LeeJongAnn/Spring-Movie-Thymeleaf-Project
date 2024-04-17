@@ -19,7 +19,7 @@ public interface boardService {
 
     public Board getBoard(Integer id);
 
-    public Page<Board> pageBoard(int pageNum);
+    public Page<Board> pageBoard(int pageNum,String field, String direction);
 
 
 
