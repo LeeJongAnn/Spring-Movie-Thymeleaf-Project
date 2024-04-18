@@ -48,7 +48,7 @@ public class BoardController {
     @PostMapping("/v1/createBoard")
     public String boardCreate(Model model, Board board, @AuthenticationPrincipal DetailsUser user) {
         boardService.createBoard(board, user);
-        return "redirect:/v1/board-page/1";
+        return "redirect:/v1/board/1";
     }
 
     /*
@@ -68,7 +68,7 @@ public class BoardController {
         boardService.deleteBoard(id);
         String message = "해당하는 게시글이 삭제되었습니다 : " + id;
         redirectAttributes.addFlashAttribute("result", message);
-        return "redirect:/v1/board-page/1";
+        return "redirect:/v1/board/1";
     }
 
 
