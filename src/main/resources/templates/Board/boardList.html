@@ -13,13 +13,17 @@
     <thead>
     <tr>
         <th scope="col">번호</th>
-        <th scope="col"><a th:if="${field == 'title'}"
-                           th:href="@{'/v1/board-page/' + ${pageNum} + '?field='+ ${field} + '&direction=' + ${direction}}" style="text-decoration-line: none">제목<span
-                th:if="${field == 'title'}"
-                th:class="${direction == 'up' ? 'bi bi-arrow-up-circle-fill' : 'bi bi-arrow-down-circle-fill'}"></span></a>
+        <th scope="col"><a th:if="${field != 'title'}"
+                           th:href="@{'/v1/board-page/' + ${pageNum} + '?field=title&direction=' + ${direction}}"
+                           style="text-decoration-line: none">제목</a>
 
+            <a th:if="${field == 'title'}"
+               th:href="@{'/v1/board-page/' + ${pageNum} + '?field=' +${field} + '&direction=' + ${down}}"
+               style="text-decoration-line: none">제목</a>
 
-
+            <span
+                    th:if="${field == 'title'}"
+                    th:class="${direction == 'up' ? 'bi bi-arrow-up-circle-fill' : 'bi bi-arrow-down-circle-fill'}"></span>
         </th>
         <th scope="col">내용</th>
         <th scope="col">작성자</th>
@@ -114,8 +118,5 @@
         });
     });
 </script>
-
 </body>
-
-
 </html>
