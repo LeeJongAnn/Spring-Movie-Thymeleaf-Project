@@ -70,7 +70,7 @@ public class BoardServiceImpl implements boardService {
     public Page<Board> pageBoard(int pageNum, String field, String direction) {
 
         Sort sort = Sort.by(field);
-        Sort Direction = sort.equals("asc") ? sort.ascending() : sort.descending();
+        Sort Direction = direction.equals("up") ? sort.ascending() : sort.descending();
         Pageable pageable = PageRequest.of(pageNum - 1, 5, Direction);
 
         Page<Board> boardPage = boardRepository.findAll(pageable);

@@ -92,14 +92,21 @@ public class BoardController {
 
 
     @GetMapping("/v1/board/{pageNum}")
-    public String pageBoard(@PathVariable("pageNum") int pageNum, Model model,@AuthenticationPrincipal User user) {
+    public String pageBoard( @PathVariable("pageNum") int pageNum,Model model,@AuthenticationPrincipal User user) {
 
         Page<Board> boards = boardService.pageBoard(1,"title","up");
         List<Board> content = boards.getContent();
+        String field = "title";
+        String direction = "up";
+        model.addAttribute("board", content);
+        model.addAttribute("totalPages", boards.getTotalPages());
+        model.addAttribute("user", user);
         model.addAttribute("board", content);
         model.addAttribute("totalPages", boards.getTotalPages());
         model.addAttribute("user", user);
         model.addAttribute("pageNum", pageNum);
+        model.addAttribute("field", field);
+        model.addAttribute("direction", direction);
         return "Board/boardList";
 
     }
