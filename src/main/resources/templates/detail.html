@@ -6,14 +6,18 @@
 <nav th:replace="~{Part/navbar :: navigation}"></nav>
 <body>
 
+<div class="container" style="width: 500px; height: 600;">
 
-<div class="border border-dark">
-    <div class="card mb-3">
-        <td>
+    <div class="card text-center">
+        <div style="text-align: center">
             <img th:src="${address + posterPath}" width="300" height="300">
-        </td>
+        </div>
+        <div class="card-body">
+            <p class="card-text" th:text="${movieDetails.getOverview()}"></p>
+        </div>
     </div>
 
 </div>
+
 </body>
 </html>
