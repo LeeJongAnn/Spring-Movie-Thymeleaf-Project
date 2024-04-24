@@ -36,9 +36,15 @@ public class MainController {
     public String getMovieDetails(Model model, @PathVariable(name = "id") Integer id) {
 
         ApiResponseDetailsMovie movieDetails = movieService.getMovieDetails(id);
+        String posterPath = movieDetails.getPoster_path();
+
+        Integer movieDetailsId = movieDetails.getId();
         model.addAttribute("movieDetails", movieDetails);
         model.addAttribute("address", address);
-        model.addAttribute("movie-detail-id", id);
+        model.addAttribute("movie-detail-id", movieDetailsId);
+        model.addAttribute("posterPath", posterPath);
+
+
         return "detail";
     }
 

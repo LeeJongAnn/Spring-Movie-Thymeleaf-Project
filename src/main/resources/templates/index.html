@@ -23,7 +23,8 @@
         <td>
             <img th:src="${address +popularMovieList.getMovieList()[index].poster_path}" width="300" height="300">
         </td>
-        <td width="120px" th:text="${popularMovieList.getMovieList()[index].title}"></td>
+
+        <td width="120px"> <a th:href="@{'/v1/popular/'}">[[${popularMovieList.getMovieList()[index].title}]]</a></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index].vote_average}"></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index].vote_count}"></td>
         <td th:text="${popularMovieList.getMovieList()[index].release_date}"></td>
