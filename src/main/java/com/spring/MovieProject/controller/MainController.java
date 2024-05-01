@@ -41,7 +41,7 @@ public class MainController {
         Integer movieDetailsId = movieDetails.getId();
         model.addAttribute("movieDetails", movieDetails);
         model.addAttribute("address", address);
-        model.addAttribute("movie-detail-id", movieDetailsId);
+        model.addAttribute("movieDetailsId", movieDetailsId);
         model.addAttribute("posterPath", posterPath);
 
 

@@ -101,7 +101,7 @@ public class ApiResponseResult {
 
     @Override
     public String toString() {
-        return "ApiResponseResult{" +
+        return "ApiResponseResult{" + "id=" + id + '\'' +
                 "adult='" + adult + '\'' +
                 ", title='" + title + '\'' +
                 ", original_name='" + original_name + '\'' +

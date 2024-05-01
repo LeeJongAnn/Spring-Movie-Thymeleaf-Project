@@ -23,8 +23,7 @@
         <td>
             <img th:src="${address +popularMovieList.getMovieList()[index].poster_path}" width="300" height="300">
         </td>
-
-        <td width="120px"> <a th:href="@{'/v1/popular/'}">[[${popularMovieList.getMovieList()[index].title}]]</a></td>
+        <td width="120px"><a th:href="@{'/v1/details/' + ${popularMovieList.getMovieList()[index].id}}">[[${popularMovieList.getMovieList()[index].title}]]</a></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index].vote_average}"></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index].vote_count}"></td>
         <td th:text="${popularMovieList.getMovieList()[index].release_date}"></td>
@@ -35,7 +34,7 @@
         <td>
             <img th:src="${address +popularMovieList.getMovieList()[index+1].poster_path}" width="300" height="300">
         </td>
-        <td width="120px" th:text="${popularMovieList.getMovieList()[index+1].title}"></td>
+        <td width="120px"><a th:href="@{'/v1/details/' + ${popularMovieList.getMovieList()[index+1].id}}">[[${popularMovieList.getMovieList()[index+1].title}]]</a></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index+1].vote_average}"></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index+1].vote_count}"></td>
         <td th:text="${popularMovieList.getMovieList()[index+1].release_date}"></td>
@@ -46,7 +45,7 @@
         <td>
             <img th:src="${address +popularMovieList.getMovieList()[index+2].poster_path}" width="300" height="300">
         </td>
-        <td width="120px" th:text="${popularMovieList.getMovieList()[index+2].title}"></td>
+        <td width="120px"><a th:href="@{'/v1/details/' + ${popularMovieList.getMovieList()[index+2].id}}">[[${popularMovieList.getMovieList()[index+2].title}]]</a></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index+2].vote_average}"></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index+2].vote_count}"></td>
         <td th:text="${popularMovieList.getMovieList()[index+2].release_date}"></td>
@@ -56,7 +55,7 @@
         <td>
             <img th:src="${address +popularMovieList.getMovieList()[index+3].poster_path}" width="300" height="300">
         </td>
-        <td width="120px" th:text="${popularMovieList.getMovieList()[index+3].title}"></td>
+        <td width="120px"><a th:href="@{'/v1/details/' + ${popularMovieList.getMovieList()[index+3].id}}">[[${popularMovieList.getMovieList()[index+3].title}]]</a></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index+3].vote_average}"></td>
         <td width="120px" th:text="${popularMovieList.getMovieList()[index+3].vote_count}"></td>
         <td th:text="${popularMovieList.getMovieList()[index+3].release_date}"></td>
