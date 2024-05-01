@@ -126,3 +126,10 @@
 ### Day 24-04-24
 1. 영화 디테일 페이지 작성을 위한 테스트 
 ![img_3.png](img_3.png)
+
+
+### Day 24-05-01
+1. Feat: ApiResponseResult.java edited ToString method , added link to Popular movie details Page
+2. Fix : Error can not find symbols ApiResponseDetailsMovie getId() Bug fix
+
+![img_4.png](img_4.png)
